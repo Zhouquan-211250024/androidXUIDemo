@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.xuexiang.templateproject">
+    package="com.xuexiang.wheretoeat">
 
     <!--进程杀死-->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
-        android:name=".MyApp"
+        android:name="com.xuexiang.wheretoeat.MyApp"
         android:allowBackup="false"
         android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +22,7 @@
         tools:replace="android:allowBackup">
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.xuexiang.wheretoeat.activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Launch.App"
@@ -34,12 +34,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.xuexiang.wheretoeat.activity.MainActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.xuexiang.wheretoeat.activity.LoginActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
@@ -47,7 +47,7 @@
 
         <!--通用浏览器-->
         <activity
-            android:name=".core.webview.AgentWebActivity"
+            android:name="com.xuexiang.wheretoeat.core.webview.AgentWebActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:hardwareAccelerated="true"
             android:label="@string/app_browser_name"
@@ -97,23 +97,23 @@
 
         <!--fragment的页面容器-->
         <activity
-            android:name=".core.BaseActivity"
+            android:name="com.xuexiang.wheretoeat.core.BaseActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <!-- 版本更新提示-->
         <activity
-            android:name=".utils.update.UpdateTipDialog"
+            android:name="com.xuexiang.wheretoeat.utils.update.UpdateTipDialog"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme" />
         <!-- Webview拦截提示弹窗-->
         <activity
-            android:name=".core.webview.WebViewInterceptDialog"
+            android:name="com.xuexiang.wheretoeat.core.webview.WebViewInterceptDialog"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme" />
         <!-- applink的中转页面 -->
         <activity
-            android:name=".core.XPageTransferActivity"
+            android:name="com.xuexiang.wheretoeat.core.XPageTransferActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
