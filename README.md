@@ -1,3 +1,3 @@
 # WhereToEat
-Krisdar chicken quanjay
+Krisdar Chicken Quanjay
 DSeven  QChen   Liyyu
