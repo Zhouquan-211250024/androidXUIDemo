@@ -72,11 +72,13 @@ public class DemoDataProvider {
      *
      * @return
      */
+    //-Library系列文章视频介绍
+    //更多咨询，欢迎点击关注公众号:【我的Android开源之旅】，里面有一整套X-Library系列文章视频介绍！
     @MemoryCache
     public static List<NewInfo> getDemoNewInfos() {
         List<NewInfo> list = new ArrayList<>();
         list.add(new NewInfo("公众号", "X-Library系列文章视频介绍")
-                .setSummary("获取更多咨询，欢迎点击关注公众号:【我的Android开源之旅】，里面有一整套X-Library系列文章视频介绍！\n")
+                .setSummary("获取更多咨询，欢迎点击关注公众号:【我的Android开源之旅】，里面有一整套X-Library系列文章视频介绍！")
                 .setDetailUrl("http://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NjA3NDIyMA==&hid=5&sn=bdee5aafe9cc2e0a618d055117c84139&scene=18#wechat_redirect")
                 .setImageUrl("https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/463930705a844f638433d1b26273a7cf~tplv-k3u1fbpfcp-watermark.image"));
 

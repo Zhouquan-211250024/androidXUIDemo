@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/XUILayout"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/search_linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            >
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_searchView"
+                android:layout_width="wrap_content"
+                android:layout_weight="20"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/search_search"
+                app:queryHint="输入点餐倾向"
+                android:iconifiedByDefault="false"
+                android:background="@drawable/bg_searchview"
+
+                />
+
+            <Button
+                android:id="@+id/search_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="搜索"
+                app:layout_constraintLeft_toRightOf="@id/search_searchView"
+                app:layout_constraintRight_toLeftOf="@id/search_talk"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/search_talk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="talk"
+                app:layout_constraintLeft_toRightOf="@id/search_search"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_linear1"
+
+            android:layout_weight="30"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

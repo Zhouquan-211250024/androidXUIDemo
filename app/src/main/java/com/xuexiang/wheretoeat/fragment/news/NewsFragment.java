@@ -17,6 +17,7 @@
 
 package com.xuexiang.wheretoeat.fragment.news;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -29,6 +30,8 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.xuexiang.wheretoeat.R;
+import com.xuexiang.wheretoeat.activity.MainActivity;
+import com.xuexiang.wheretoeat.activity.SearchDetailActivity;
 import com.xuexiang.wheretoeat.adapter.base.broccoli.BroccoliSimpleDelegateAdapter;
 import com.xuexiang.wheretoeat.adapter.base.delegate.SimpleDelegateAdapter;
 import com.xuexiang.wheretoeat.adapter.base.delegate.SingleDelegateAdapter;
@@ -85,6 +88,18 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
         binding.recyclerView.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 10);
 
+
+        SingleDelegateAdapter searchAdapter = new SingleDelegateAdapter(R.layout.adapter_search_view) {
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+                holder.text(R.id.tv_search, "demo");
+                holder.click(R.id.tv_search, v -> intentToDetail());
+            }
+        };
+
+
+
+
         //轮播条
         SingleDelegateAdapter bannerAdapter = new SingleDelegateAdapter(R.layout.include_head_view_banner) {
             @Override
@@ -96,28 +111,28 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
         };
 
         //九宫格菜单
-        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(4);
-        gridLayoutHelper.setPadding(0, 16, 0, 0);
-        gridLayoutHelper.setVGap(10);
-        gridLayoutHelper.setHGap(0);
-        SimpleDelegateAdapter<AdapterItem> commonAdapter = new SimpleDelegateAdapter<AdapterItem>(R.layout.adapter_common_grid_item, gridLayoutHelper, DemoDataProvider.getGridItems(getContext())) {
-            @Override
-            protected void bindData(@NonNull RecyclerViewHolder holder, int position, AdapterItem item) {
-                if (item != null) {
-                    RadiusImageView imageView = holder.findViewById(R.id.riv_item);
-                    imageView.setCircle(true);
-                    ImageLoader.get().loadImage(imageView, item.getIcon());
-                    holder.text(R.id.tv_title, item.getTitle().toString().substring(0, 1));
-                    holder.text(R.id.tv_sub_title, item.getTitle());
-
-                    holder.click(R.id.ll_container, v -> {
-                        XToastUtils.toast("点击了：" + item.getTitle());
-                        // 注意: 这里由于NewsFragment是使用Viewpager加载的，并非使用XPage加载的，因此没有承载Activity， 需要使用openNewPage。
-                        openNewPage(GridItemFragment.class, GridItemFragment.KEY_TITLE_NAME, item.getTitle());
-                    });
-                }
-            }
-        };
+//        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(4);
+//        gridLayoutHelper.setPadding(0, 16, 0, 0);
+//        gridLayoutHelper.setVGap(10);
+//        gridLayoutHelper.setHGap(0);
+//        SimpleDelegateAdapter<AdapterItem> commonAdapter = new SimpleDelegateAdapter<AdapterItem>(R.layout.adapter_common_grid_item, gridLayoutHelper, DemoDataProvider.getGridItems(getContext())) {
+//            @Override
+//            protected void bindData(@NonNull RecyclerViewHolder holder, int position, AdapterItem item) {
+//                if (item != null) {
+//                    RadiusImageView imageView = holder.findViewById(R.id.riv_item);
+//                    imageView.setCircle(true);
+//                    ImageLoader.get().loadImage(imageView, item.getIcon());
+//                    holder.text(R.id.tv_title, item.getTitle().toString().substring(0, 1));
+//                    holder.text(R.id.tv_sub_title, item.getTitle());
+//
+//                    holder.click(R.id.ll_container, v -> {
+//                        XToastUtils.toast("点击了：" + item.getTitle());
+//                        // 注意: 这里由于NewsFragment是使用Viewpager加载的，并非使用XPage加载的，因此没有承载Activity， 需要使用openNewPage。
+//                        openNewPage(GridItemFragment.class, GridItemFragment.KEY_TITLE_NAME, item.getTitle());
+//                    });
+//                }
+//            }
+//        };
 
         //资讯的标题
         SingleDelegateAdapter titleAdapter = new SingleDelegateAdapter(R.layout.adapter_title_item) {
@@ -163,12 +178,18 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
         };
 
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
+        delegateAdapter.addAdapter(searchAdapter);
         delegateAdapter.addAdapter(bannerAdapter);
-        delegateAdapter.addAdapter(commonAdapter);
+//        delegateAdapter.addAdapter(commonAdapter);
         delegateAdapter.addAdapter(titleAdapter);
         delegateAdapter.addAdapter(mNewsAdapter);
 
         binding.recyclerView.setAdapter(delegateAdapter);
+    }
+
+    public void intentToDetail(){
+        Intent intent = new Intent(getContext(), SearchDetailActivity.class);
+        startActivity(intent);
     }
 
     @Override
